@@ -48,7 +48,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 //                 .then(weather => res.json(weather));
 //         });
 // })
-s
+
 // app.delete('/api/weather/:id', (req, res) => {
 //     Weather.findOneAndRemove({ _id: req.params.id })
 //         .then((result) => res.json({ msg: "weather has been deleted", success: true }));

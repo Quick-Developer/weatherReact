@@ -4,17 +4,26 @@ import './App.css';
 import SearchForm from './searchForm';
 import WeatherListBox from './weatherListBox'
 import { throws } from 'assert';
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
 
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
   root: {
+
+   
+    paddingTop: 50,
+    paddingRight: 30,
+    paddingBottom: 40,
+    paddingLeft: 30,
+    
   },
-  Container: { 
+  Container: {
     display: 'flex',
     flexDirection: 'row',
-    flexWrap:"wrap",
-    justifyContent: "space-around",
+    flexWrap: "wrap",
+    justifyContent: "flex-start",
     //flex-flow
   }
 });
@@ -33,7 +42,6 @@ class App extends Component {
       weatherList: [],
     };
   }
-
 
   addWeather(weatherData) {
     //  this.setState({ weatherList: [...this.state.weatherList, weatherData] })
@@ -103,10 +111,13 @@ class App extends Component {
     const { classes } = this.props;
     return (
       <div>
-        <div >
-          <h2>Weather app</h2>
+        <Paper className={classes.root} elevation={1}>
+          <Typography variant="display2"  gutterBottom>
+            Weather app
+          </Typography>
           <SearchForm onSubmit={this.addWeather} />
-        </div>
+        </Paper>
+
         <div className={classes.Container}>
           <WeatherListBox
             weatherList={this.state.weatherList}
@@ -119,6 +130,16 @@ class App extends Component {
   }
 }
 
-export default  withStyles(styles)(App);
+export default withStyles(styles)(App);
 
-//addWeather={this.addWeather} 
+//addWeather={this.addWeather}
+
+
+
+
+
+
+{/* <Typography component="p">
+    <h4 >{name}</h4>
+    <p>{text}- {feelslikeC}&nbsp;° &nbsp;| C</p>
+</Typography> */}

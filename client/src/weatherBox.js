@@ -6,13 +6,28 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
+import Divider from '@material-ui/core/Divider';
+import Button from '@material-ui/core/Button';
 
 const styles = theme => ({
     root: {
-        ...theme.mixins.gutters(),
+
         paddingTop: theme.spacing.unit * 2,
         paddingBottom: theme.spacing.unit * 2,
-        maxWidth: 400,
+        minWidth: 250,
+        maxWidth: 500,
+        borderRadius: '0px 30px 10px 10px',
+        marginLeft: 10,
+        marginRight: 10,
+        borderStyle: 'inset',
+        borderWidth: 3,
+        borderColor: 'LightGray'
+    },
+    button: {
+        margin: theme.spacing.unit,
+    },
+    extendedIcon: {
+        marginRight: theme.spacing.unit,
     },
 });
 
@@ -20,39 +35,35 @@ const WeatherBox = ({ id, name, icon, feelslikeC, text, comments, addComment, re
     (
         <div>
             <Paper className={classes.root} elevation={1}>
-
-
+                <Typography variant="title" gutterBottom align="center" >
+                    {name}
+                </Typography>
+                <Divider />
                 <Typography variant="headline" component="h3">
-
-                    <img className="weather__icon" src={icon} alt={text} className="media-object" style={{ width: 60 }} />
-
-                </Typography>
-                <Typography component="p">
-                    <h4 >{name}</h4>
-                    <p>{text}- {feelslikeC}&nbsp;° &nbsp;| C</p>
+                    <img className="weather__icon" src={icon} alt={text} />
                 </Typography>
 
-                <div className="media-body">
+                <Typography variant="subheading" gutterBottom>
+                    {text} - {feelslikeC}&nbsp;° &nbsp;| C
+                </Typography>
 
-                </div>
-
-                <button className="btn btn-default" onClick={removeWeather} type="submit" style={{ width: 60 }}>
-                    <i className="fa fa-2x fa-trash" aria-hidden="true" />
-                </button>
-
-                <div className="weather__box">
-                    <CommentForm weatherId={id} addComment={addComment} />
-                </div>
-                <div className="weather__box">
+                <Button color="secondary" variant="outlined"  aria-label="Delete" className={classes.button} onClick={removeWeather}>
+                    <i className="material-icons">
+                        delete_outline
+                    </i>
+                </Button>
+                <Divider />
+                <CommentForm weatherId={id} addComment={addComment} style={{ padding:5 }}/>                
+                <div>
                     <CommentListBox removeComment={removeComment} weatherId={id} comments={comments} />
                 </div>
             </Paper>
         </div>
     );
 
-    WeatherBox.propTypes = {
-        classes: PropTypes.object.isRequired,
-    };
+WeatherBox.propTypes = {
+    classes: PropTypes.object.isRequired,
+};
 
 export default withStyles(styles)(WeatherBox);
 
@@ -60,6 +71,6 @@ export default withStyles(styles)(WeatherBox);
 
 
 
-        
+
 
 

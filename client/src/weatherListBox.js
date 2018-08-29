@@ -10,6 +10,7 @@ const styles = theme => ({
     flexDirection: 'row',
     flexWrap:"wrap",
     justifyContent: "space-around",
+    margin: 10,
     //flex-flow
   }
 });
